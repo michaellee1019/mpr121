@@ -5,7 +5,7 @@
   "description": "A Viam module that returns sensor values from a capacitive touch sensor with the MPR121 chip.",
   "models": [
     {
-	"api": "rdk:builtin:sensor",
+	"api": "rdk:component:sensor",
       "model": "michaellee1019:mpr121:mpr121"
     }
   ],
