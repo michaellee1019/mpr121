@@ -9,10 +9,10 @@
       "model": "michaellee1019:mpr121:mpr121"
     }
   ],
-  "entrypoint": "run.sh",
   "build": {
-    "build": "sh run.sh",
+    "build": "sh build.sh",
     "path": "dist/archive.tar.gz",
     "arch" : ["linux/arm64", "linux/amd64"]
-  }
+  },
+  "entrypoint": "exec.sh"
 }

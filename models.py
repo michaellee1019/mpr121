@@ -4,6 +4,7 @@ from viam.proto.app.robot import ComponentConfig
 from typing import Mapping, Self
 from viam.proto.common import ResourceName
 from viam.resource.base import ResourceBase
+import sys
 import time
 import board
 import busio
@@ -27,5 +28,12 @@ class MPR121(Sensor):
         self.mpr121 = adafruit_mpr121.MPR121(i2c)
 
     async def get_readings(self, **kwargs):
-        return self.mpr121
+        return {"touchpads": [t.value for t in self.mpr121]}
 
+if __name__ == '__main__':
+    # necessary for pyinstaller to see it
+    # build this with: 
+    # pyinstaller --onefile --hidden-import viam-wrap --paths $VIRTUAL_ENV/lib/python3.10/site-packages installable.py 
+    # `--paths` arg may no longer be necessary once viam-wrap is published somewhere
+    # todo: utility to append this stanza automatically at build time
+    viam_wrap.main(sys.modules.get(__name__))
