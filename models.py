@@ -25,7 +25,12 @@ class MPR121(Sensor):
                     config: ComponentConfig,
                     dependencies: Mapping[ResourceName, ResourceBase]):
         i2c = busio.I2C(board.SCL, board.SDA)
-        self.mpr121 = adafruit_mpr121.MPR121(i2c)
+
+        i2c_address: int = 0x5A
+        if "i2c_address" in config.attributes.fields:
+            i2c_address = int(config.attributes.fields["i2c_address"].string_value, base=16)
+
+        self.mpr121 = adafruit_mpr121.MPR121(i2c=i2c, address=i2c_address)
 
     async def get_readings(self, **kwargs):
         return {"touchpads": [t.value for t in self.mpr121]}
