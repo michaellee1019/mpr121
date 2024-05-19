@@ -1,23 +1,34 @@
-# michaellee1019:i2cdetect
-A Viam module that returns all active i2c addresses as sensor values. Useful for troubleshooting wiring and connection issues without having to install software or SSH into the device.
+# mpr121
+A Viam module that returns sensor values from a capacitive touch sensor device with the MPR121 chip.
 
 # Attributes
-Specifying an `i2c_bus` attribute is required.
+No configuration attributes are required if your device operates on the i2c address of `0x5A`. Otherwise you can configure a different address using the config example below. The module is built assuming the default I2C bus.
 
 ```json
 {
-  "i2c_bus": 1,
+  "i2c_address": "0x5A"
 }
 ```
 
 # GetReadings
-The Sensor.GetReadings response will look like the following. It will list the hexidecimal i2c address of each device that is communicating over the i2c bus. Note that the api call will trigger a read from devices at all addresses on the bus. It could have unindended consequences for devices that perform operations during a read, but is generally safe.
+The Sensor.GetReadings response will look like the following. A touchpads array contains the status of each pad/input to the device. True means that it is being touched, false means untouched. In the below example, input 0 is touched and 1-11 is untouched.
 
 ```json
 	
 {
-  "active": [
-    "0x68"
+  "touchpads": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
   ]
 }
 
