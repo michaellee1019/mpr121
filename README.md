@@ -33,4 +33,3 @@ The Sensor.GetReadings response will look like the following. A touchpads array 
 }
 
 ```
-# ViamStartStopLoopService
