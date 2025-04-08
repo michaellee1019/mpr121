@@ -1,12 +1,15 @@
 {
   "module_id": "michaellee1019:mpr121",
-  "visibility": "private",
+  "visibility": "public",
   "url": "https://github.com/michaellee1019/mpr121",
   "description": "A Viam module that returns sensor values from a capacitive touch sensor with the MPR121 chip.",
+  "markdown_link": "README.md",
   "models": [
     {
-	"api": "rdk:component:sensor",
-      "model": "michaellee1019:mpr121:mpr121"
+	    "api": "rdk:component:sensor",
+      "model": "michaellee1019:mpr121:mpr121",
+      "short_description": "Returns sensor readings as boolean values from a capacitive touch sensor with the MPR121 chip.",
+      "markdown_link": "README.md#model-michaellee1019mpr121mpr121"
     }
   ],
   "build": {
